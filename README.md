@@ -13,6 +13,7 @@ https://nodejs.org/en/download/
 4) Run nodemon index to start the server.
 
 Rough idea of the backend :
+
 ![image](https://user-images.githubusercontent.com/89146189/193776877-9a467561-473b-4244-a931-4047adaa3118.png)
 
 ![image](https://user-images.githubusercontent.com/89146189/193776946-5c3f4e31-d8b9-4de5-817a-903df399bb5e.png)
