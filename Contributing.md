@@ -12,6 +12,9 @@ you can put a comment in the issue's chat section and it shall be assigned to yo
 2. After that you can work on that issue and in case of doubts feel free to clarify them.
 
 <h2> Making a pull request:</h2>
+While making a pull request, mention the issue(issue number) it resolves.<br>
+DO NOT SPAM pull requests or they will be marked invalid.<br>
+Only make PRs for issues listed or raise a new issue.<br>
 You can practice making a pull request in the repository given below, be sure to resolve any merge conflicts before submitting the PR otherwise it would be rejected.
 https://github.com/firstcontributions/first-contributions
 
