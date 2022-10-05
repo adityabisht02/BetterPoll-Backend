@@ -1,6 +1,8 @@
 # BetterPoll-Backend
 This is the backend repository for the BetterPoll android application currently under development. 
-The APIs are being created using node js, express js and mySQL as the database and will be deployed on heroku for testing.
+
+The APIs are being created using node js, express js and mySQL as the database and will be deployed on heroku for testing.<br>
+The frontend repo : https://github.com/adityabisht02/Betterpoll
 
 How to Setup:
 1) Install Node js 
