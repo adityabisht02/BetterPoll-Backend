@@ -1,10 +1,20 @@
 require("dotenv").config();
 const express= require("express");
 const app = express();
-
-// router
+const cors = require("cors");
+app.use(cors());
 var router = express.Router();
 app.use(router);
+
+
+//importing routers
+const login=require("./apis/login");
+const messmanagement=require('./apis/messmanagement');
+
+//setting apis
+app.use("/login", login); 
+app.use("/mess",messmanagement);
+
 
 router.get("/", function(req, res){
     return res.json({success:true,message:"you have succesfully made an api call to the backend"});
