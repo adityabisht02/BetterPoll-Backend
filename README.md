@@ -13,6 +13,8 @@ https://nodejs.org/en/download/
 
 3) Run npm i to install dependencies.
 
+4) Create a database "betterpoll" and run the initialiseDB() function to create tables for users and admins.
+
 4) Run nodemon index to start the server.
 
 Rough idea of the backend :
