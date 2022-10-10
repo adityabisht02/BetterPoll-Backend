@@ -10,7 +10,7 @@ app.use(router);
 const pool=require("./mysqlconnector");
 
 //importing routers
-const login=require("./apis/login");
+const login=require("./user/login");
 
 //setting apis
 app.use("/", login); 
