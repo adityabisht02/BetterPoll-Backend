@@ -16,27 +16,6 @@ const login=require("./user/login");
 app.use("/", login); 
 
 
-//function to initialise tables for database setup (needs to be run only once)
-function initialiseDB(){
-  pool.query("CREATE TABLE admin (id int,name varchar(50),email varchar(50));", (ex, rows) => {
-    if (ex) {
-      console.log(ex);
-    } else {
-      console.log("created admin")
-    }
-  });
-
-  pool.query("CREATE TABLE users (id int,name varchar(50),email varchar(50),phone int(50));", (ex, rows) => {
-    if (ex) {
-      console.log(ex);
-    } else {
-      console.log("created admin")
-    }
-  });
-}
-
-// initialiseDB();
-
 router.get("/", function(req, res){
     pool.query('SELECT * FROM users', (ex, rows) => {
         if (ex) {

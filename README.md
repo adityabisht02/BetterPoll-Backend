@@ -5,19 +5,22 @@ The APIs are being created using node js, express js and mySQL as the database a
 
 The frontend repo : https://github.com/adityabisht02/Betterpoll
 
-How to Setup:
-1) Install Node js 
-https://nodejs.org/en/download/
+## How to Setup:
+1) Install [Node js](https://nodejs.org/en/download/)
 
-2) Clone this repository and cd to the folder containing the index.js file.
+2) Clone this repository using ```git clone https://github.com/adityabisht02/BetterPoll-Backend```
 
-3) Run npm i to install dependencies.
+3) change directory to the folder containing the index.js file using ```cd BetterPoll-Backend```
 
-4) Create a database "betterpoll" and run the initialiseDB() function to create tables for users and admins.
+4) Run ```npm i``` to install dependencies.
 
-4) Run nodemon index to start the server.
+5) Create a mySQL database called "betterpoll". Check here to [install mySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing)
 
-Rough idea of the backend :
+6) Run ```npm run initialise-db``` function to create tables for users and admins.
+
+4) Run ```npm start``` to start the server.
+
+## Backend workflow:
 
 ![image](https://user-images.githubusercontent.com/89146189/193776877-9a467561-473b-4244-a931-4047adaa3118.png)
 

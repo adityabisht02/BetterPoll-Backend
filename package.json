@@ -4,7 +4,9 @@
   "description": "Backend for BetterPoll",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "initialise-db": "node initialisedb.js",
+    "start": "nodemon index.js"
   },
   "author": "Aditya Bisht",
   "license": "ISC",
