@@ -1,3 +1,6 @@
+//mysql connector pool
+const pool=require("./mysqlconnector");
+
 function initialiseDB(){
     pool.query("CREATE TABLE admin (id int,name varchar(50),email varchar(50));", (ex, rows) => {
       if (ex) {
