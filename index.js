@@ -11,10 +11,11 @@ const pool=require("./mysqlconnector");
 
 //importing routers
 const login=require("./user/login");
+const newUser = require("./admin/users");
 
 //setting apis
 app.use("/", login); 
-
+app.use("/admin", newUser);
 
 router.get("/", function(req, res){
     pool.query('SELECT * FROM users', (ex, rows) => {
@@ -24,8 +25,8 @@ router.get("/", function(req, res){
           return res.json({success:true,message:"you have succesfully made an api call to the backend",value:rows});
         }
       });
-  
 })
+
 
 
 
