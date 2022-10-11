@@ -1,5 +1,6 @@
+const express = require("express");
 const pool = require("../mysqlconnector");
-const router = require("../index");
+const router = express.Router();
 
 const addNewUser = async (req, res) => {
     const user = req.body;
