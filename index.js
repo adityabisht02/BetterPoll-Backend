@@ -6,17 +6,16 @@ app.use(cors());
 var router = express.Router();
 app.use(router);
 
-const addNewUser = require("./admin/users");
-
 //mysql connector pool
 const pool=require("./mysqlconnector");
 
 //importing routers
 const login=require("./user/login");
+const newUser = require("./admin/users");
 
 //setting apis
 app.use("/", login); 
-
+app.use("/admin", newUser);
 
 router.get("/", function(req, res){
     pool.query('SELECT * FROM users', (ex, rows) => {
@@ -27,7 +26,7 @@ router.get("/", function(req, res){
         }
       });
 })
-router.post("/newUser", addNewUser);
+
 
 
 
