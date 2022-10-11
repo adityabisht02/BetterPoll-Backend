@@ -6,7 +6,7 @@ app.use(router);
 
 
 //mysql connector pool
-const pool=require("./mysqlconnector");
+const pool=require("../mysqlconnector");
 
 router.post("/signup",function(req,res){
 
