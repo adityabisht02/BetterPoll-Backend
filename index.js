@@ -6,6 +6,8 @@ app.use(cors());
 var router = express.Router();
 app.use(router);
 
+const addNewUser = require("./admin/users");
+
 //mysql connector pool
 const pool=require("./mysqlconnector");
 
@@ -24,8 +26,8 @@ router.get("/", function(req, res){
           return res.json({success:true,message:"you have succesfully made an api call to the backend",value:rows});
         }
       });
-  
 })
+router.post("/newUser", addNewUser);
 
 
 
