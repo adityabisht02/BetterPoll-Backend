@@ -24,6 +24,14 @@ function initialiseDB(){
             console.log("created menu!");
         }
     });
+
+    pool.query("CREATE TABLE shuttles (busno int,tripName varchar(50));", (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("created admin")
+      }
+    });
   }
   
 initialiseDB();
