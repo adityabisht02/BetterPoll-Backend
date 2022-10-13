@@ -4,7 +4,7 @@ var router = express.Router();
 app.use(router);
 
 //mysql connector pool
-const pool=require("./mysqlconnector");
+const pool=require("../mysqlconnector");
 
 router.post("/login", function(req, res){
     const { email } = req.body;
