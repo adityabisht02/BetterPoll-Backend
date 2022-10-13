@@ -13,12 +13,14 @@ app.use(express.json());
 const pool=require("./mysqlconnector");
 
 //importing routers
-const login=require("./user/login");
-const newUser = require("./admin/users");
+const userLoginApis=require("./user/login");
+const adminUserApis = require("./admin/users");
+const adminShuttleApis=require("./admin/shuttleservice");
 
 //setting apis
-app.use("/", login); 
-app.use("/admin", newUser);
+app.use("/", userLoginApis); 
+app.use("/admin", adminUserApis);
+app.use("/admin", adminShuttleApis)
 
 router.get("/", function(req, res){
     pool.query('SELECT * FROM users', (ex, rows) => {
