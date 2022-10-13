@@ -10,18 +10,18 @@ function initialiseDB(){
       }
     });
   
-    pool.query("CREATE TABLE users (id int,name varchar(50),email varchar(50),phone int(50));", (ex, rows) => {
+    pool.query("CREATE TABLE users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone int(50),PRIMARY KEY (id));", (ex, rows) => {
       if (ex) {
         console.log(ex);
       } else {
-        console.log("created admin")
+        console.log("created users")
       }
     });
     pool.query("CREATE TABLE menus (day varchar(25) primary key not null, breakfastMenu TEXT, lunchMenu TEXT, dinnerMenu TEXT);", (ex, rows)=>{
         if(ex){
             console.log(ex);
         } else{
-            console.log("created menu!");
+            console.log("created menu");
         }
     });
 
@@ -29,7 +29,7 @@ function initialiseDB(){
       if (ex) {
         console.log(ex);
       } else {
-        console.log("created admin")
+        console.log("created shuttles")
       }
     });
   }
