@@ -8,7 +8,6 @@ const jsonParser = bodyParser.json();
 
 const addNewUser = async (req, res) => {
     const {user} = req.body;
-    console.log(user);
     pool.query("INSERT INTO users SET ? ", {users: user}, function (error, results, fields) {
         if (error) throw error;
         res.status(201).json({success: true, results, msg: "User created successfully"});
