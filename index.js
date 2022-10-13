@@ -6,6 +6,9 @@ app.use(cors());
 var router = express.Router();
 app.use(router);
 
+//middlewares
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 //mysql connector pool
 const pool=require("./mysqlconnector");
 
