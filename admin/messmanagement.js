@@ -17,4 +17,3 @@ function randomNum(){
 }
 
 
-module.exports=router;
