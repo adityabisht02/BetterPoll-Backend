@@ -5,7 +5,7 @@ const pool = mysql.createPool({
     connectionLimit : 10, //important
     host     : 'localhost',
     user     : 'root',
-    password : 'leksyking7',
+    password : 'process.env.SQL_PASSWORD',
     database : 'betterpoll'
 });
 

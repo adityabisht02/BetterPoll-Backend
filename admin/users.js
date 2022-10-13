@@ -6,9 +6,8 @@ const router = express.Router();
 const addNewUser = (req, res) => {
     const {name, email, phone} = req.body;
     console.log(req.body);
-    let id = 2;
-    let sql = `INSERT INTO users (id, name, email, phone) VALUES (?, ?, ?, ?);`;
-    pool.query(sql, [id, name, email, phone], function (error, results, fields) {
+    let sql = `INSERT INTO users (name, email, phone) VALUES (?, ?, ?);`;
+    pool.query(sql, [name, email, phone], function (error, results, fields) {
         if (error) throw error;
         res.status(201).json({success: true, results, msg: "User created successfully"});
     });
