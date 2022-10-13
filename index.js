@@ -23,16 +23,6 @@ app.use("/", userLoginApis);
 app.use("/admin", adminUserApis);
 app.use("/admin", adminShuttleApis)
 
-router.get("/", function(req, res){
-    pool.query('SELECT * FROM users', (ex, rows) => {
-        if (ex) {
-          console.log(ex);
-        } else {
-          return res.json({success:true,message:"you have succesfully made an api call to the backend",value:rows});
-        }
-      });
-})
-
 
 
 

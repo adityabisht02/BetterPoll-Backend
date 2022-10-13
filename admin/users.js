@@ -4,6 +4,10 @@ const router = express.Router();
 
 
 const addNewUser = (req, res) => {
+    
+}
+
+router.post("/add-new-user", (req,res)=>{
     const {name, email, phone} = req.body;
     console.log(req.body);
     let sql = `INSERT INTO users (name, email, phone) VALUES (?, ?, ?);`;
@@ -11,9 +15,7 @@ const addNewUser = (req, res) => {
         if (error) throw error;
         res.status(201).json({success: true, results, msg: "User created successfully"});
     });
-}
-
-router.post("/add-new-user", addNewUser);
+});
 
 router.post("/get-user", function (req, res) {
     console.log(req.body)
