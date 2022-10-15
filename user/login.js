@@ -8,7 +8,7 @@ router.post("/login", function(req, res){
     
     pool.query("SELECT * FROM users WHERE email = ?", email, function (error, results, fields){
         if (error) throw error;
-        res.status(201).json({error: false, results, msg: "You have successfully logged in"});
+        res.status(201).json({success: true, results, msg: "You have successfully logged in"});
     });
 });
 
