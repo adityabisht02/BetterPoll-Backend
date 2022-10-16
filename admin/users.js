@@ -34,6 +34,7 @@ router.get("/get-all-user-details",function (req, res){
 
 })
 
+
 router.put('/edit-user-details', async (req, res) => {
     const requestPayload = {
         name : req.body.name,
