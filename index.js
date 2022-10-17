@@ -21,7 +21,7 @@ const adminShuttleApis=require("./admin/shuttleservice");
 //setting apis
 app.use("/", userLoginApis); 
 app.use("/admin", adminUserApis);
-app.use("/admin", adminShuttleApis)
+app.use("/admin", adminShuttleApis);
 
 
 
