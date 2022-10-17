@@ -17,11 +17,13 @@ const pool=require("./mysqlconnector");
 const userLoginApis=require("./user/login");
 const adminUserApis = require("./admin/users");
 const adminShuttleApis=require("./admin/shuttleservice");
+const userviewShuttleservice = require("./user/shuttleservice");
 
 //setting apis
 app.use("/", userLoginApis); 
 app.use("/admin", adminUserApis);
-app.use("/admin", adminShuttleApis);
+app.use("/admin", adminShuttleApis)
+app.use("/",userviewShuttleservice);
 
 
 
