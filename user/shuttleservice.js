@@ -3,7 +3,7 @@ var router = express.Router();
 //mysql connector pool
 const pool=require("../mysqlconnector");
 
-router.get("/get-shuttle",function (req, res){
+router.get("/view-shuttles",function (req, res){
     let sql='SELECT * FROM shuttles';
     pool.query(sql, function (error, results, fields) {
         if (error) throw error;
