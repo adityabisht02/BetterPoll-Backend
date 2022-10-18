@@ -32,6 +32,14 @@ function initialiseDB(){
         console.log("created shuttles")
       }
     });
+    
+    pool.query("CREATE TABLE posts (id int AUTO_INCREMENT primary key, content TEXT, date TIMESTAMP);", (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("created posts")
+      }
+    });
   }
   
 initialiseDB();
