@@ -18,5 +18,12 @@ router.post("/make-post",function (req, res){
 
 
 //view-all-posts
+router.get("/view-all-posts", function (req, res){
+    let sql='SELECT * FROM posts';
+    pool.query(sql, function (error, results, fields) {
+        if (error) throw error;
+        res.status(200).json({success: true, results, msg: "All posts retrieved successfully"});
+    });
+})
 
 module.exports=router;
