@@ -2,13 +2,8 @@
 <!--- Describe the problems, issues, or needs driving this feature/fix and include links to related issues -->
 The purpose of this Pull Request is to fix #<issue-number>
 
-## Description
-<!---  Describe the solutions that this feature/fix will introduce to resolve the problems described above -->
 
-## How you solved
-<!--- Describe how you are implementing the solutions. -->
-
-### Screenshots
+### Postman Screenshots
 <!---  Include an short video or screenshot if the change affects the UI.  -->
   
 
