@@ -67,7 +67,7 @@ function initialiseDB() {
       if (ex) {
         console.log(ex);
       } else {
-        console.log("created shuttles");
+        console.log("Data added to menus");
       }
     }
   );
