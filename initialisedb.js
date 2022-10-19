@@ -33,7 +33,7 @@ function initialiseDB(){
       }
     });
     
-    pool.query("CREATE TABLE posts (id int AUTO_INCREMENT primary key, content TEXT, date TIMESTAMP);", (ex, rows) => {
+    pool.query("CREATE TABLE posts (id int AUTO_INCREMENT primary key, name varchar(128), content TEXT, date TIMESTAMP);", (ex, rows) => {
       if (ex) {
         console.log(ex);
       } else {
