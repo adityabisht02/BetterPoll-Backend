@@ -46,7 +46,7 @@ function initialiseDB() {
   );
 
   pool.query(
-    "CREATE TABLE posts (id int AUTO_INCREMENT primary key, name varchar(128), content TEXT, date TIMESTAMP);",
+    "CREATE TABLE posts (id int AUTO_INCREMENT primary key, name varchar(128), content TEXT, date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
