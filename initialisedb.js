@@ -2,7 +2,7 @@
 const pool=require("./mysqlconnector");
 
 function initialiseDB(){
-    pool.query("CREATE TABLE admin (id int,name varchar(50),email varchar(50));", (ex, rows) => {
+    pool.query("CREATE TABLE admin (id int,username varchar(50),password varchar(50),email varchar(50));", (ex, rows) => {
       if (ex) {
         console.log(ex);
       } else {
