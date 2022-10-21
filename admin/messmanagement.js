@@ -17,14 +17,6 @@ router.put('/edit-menu', (req, res) => {
         dinnerMenu: req.body.dinnerMenu.toString().trim(),
     }
 
-    // day can be sunday through saturday
-    if (sanitizedPayload.day < 1 || sanitizedPayload.day > 7) {
-        return res.status(400).json({
-            message: "the day is invalid",
-            error: "unable to parse: " + req.body.day,
-        });
-    }
-
     let successfulStatus;
 
     // check if we can find the day in the menus table
