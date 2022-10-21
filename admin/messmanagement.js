@@ -11,25 +11,19 @@ app.use(bodyParser.json());
 router.put('/edit-menu', (req, res) => {
     // sanitize data
     const sanitizedPayload = {
-        // convert to unix time // sets a NaN if invalid
-        day: Date.parse(req.body.day),
+        day: req.body.day.toString().trim(),
         // each of these is supposed to be text so make them strings and trim
         breakfastMenu: req.body.breakfastMenu.toString().trim(),
         lunchMenu: req.body.lunchMenu.toString().trim(),
         dinnerMenu: req.body.dinnerMenu.toString().trim(),
     }
 
-    // if unable to con
-    if (isNaN(sanitizedPayload.day)) {
+    // day can be sunday through saturday
+    if (sanitizedPayload.day < 1 || sanitizedPayload.day > 7) {
         return res.status(400).json({
-            message: "the date is invalid",
+            message: "the day is invalid",
             error: "unable to parse: " + req.body.day,
         });
-    }
-    else {
-        sanitizedPayload.day = sanitizedPayload.day.toString();
-        // we only want the day so trim off hours, minutes, and seconds
-        sanitizedPayload.day = sanitizedPayload.day.slice(0, sanitizedPayload.day.length - 5).concat("00000");
     }
 
     let successfulStatus;
@@ -54,7 +48,7 @@ router.put('/edit-menu', (req, res) => {
         // if the menu for the day exists then override it
         else {
             query = `UPDATE menus SET breakfastMenu = '${sanitizedPayload.breakfastMenu}', lunchMenu = '${sanitizedPayload.lunchMenu}', dinnerMenu = '${sanitizedPayload.dinnerMenu}' WHERE day = '${sanitizedPayload.day}';`;
-            // if a record is simply updated then return the "OK" code
+            // if a record is updated then return the "OK" code
             successfulStatus = 200;
         }
 
