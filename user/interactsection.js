@@ -6,10 +6,10 @@ const pool=require("../mysqlconnector");
 
 //make-post 
 router.post("/make-post",function (req, res){
-    const { name, postcontent, date } = req.body
+    const { name, postcontent} = req.body
 
-    let sql='INSERT INTO posts (name, postcontent, date) VALUES ( ?, ?, ? );';
-    pool.query(sql, [name, postcontent, date],  function (error, results, fields) {
+    let sql='INSERT INTO posts (name, postcontent) VALUES ( ?, ? );';
+    pool.query(sql, [name, postcontent],  function (error, results, fields) {
         if (error) throw error;
         res.status(201).json({success: true, results, msg: "Post created successfully"});
     });
