@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
 
-// day: most date formats will work. ISO 8601 format is the standard and preferred: YYYY-MM-DD
 // breakfastMenu, lunchMenu, and dinnerMenu expect a string and will attempt to convert anything submitted into a string
 router.put('/edit-menu', (req, res) => {
     // sanitize data
