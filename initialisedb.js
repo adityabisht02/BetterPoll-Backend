@@ -1,15 +1,8 @@
 //mysql connector pool
 const pool = require("./mysqlconnector");
 
-<<<<<<< HEAD
 function initialiseDB(){
     pool.query("CREATE TABLE admin (id int,username varchar(50),password varchar(50),email varchar(50));", (ex, rows) => {
-=======
-function initialiseDB() {
-  pool.query(
-    "CREATE TABLE admin (id int,name varchar(50),email varchar(50));",
-    (ex, rows) => {
->>>>>>> e80f65e7013512bd9bc61dd922b0d68c99caec74
       if (ex) {
         console.log(ex);
       } else {
