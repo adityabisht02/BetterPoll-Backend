@@ -55,7 +55,7 @@ function initialiseDB(){
   );
 
   pool.query(
-    "CREATE TABLE messcodes (userId int not null, breakfastcode int, lunchcode int, snackscode int, FOREIGN KEY (userId) REFERENCES users(id));",
+    "CREATE TABLE messcodes (userId int not null, breakfastcode int, lunchcode int, dinnercode int, snackscode int, FOREIGN KEY (userId) REFERENCES users(id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
