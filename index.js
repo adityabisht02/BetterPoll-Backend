@@ -18,12 +18,14 @@ const userLoginApis=require("./user/login");
 const adminUserApis = require("./admin/users");
 const adminShuttleApis=require("./admin/shuttleservice");
 const userviewShuttleservice = require("./user/shuttleservice");
+const adminMessApis=require("./admin/messmanagement");
 
 //setting apis
 app.use("/", userLoginApis); 
 app.use("/admin", adminUserApis);
 app.use("/admin", adminShuttleApis)
 app.use("/",userviewShuttleservice);
+app.use("/admin", adminMessApis)
 
 
 
