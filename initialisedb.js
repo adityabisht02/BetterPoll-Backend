@@ -53,6 +53,18 @@ function initialiseDB(){
       }
     }
   );
+
+  pool.query(
+    "CREATE TABLE messcodes (userId int not null, breakfastcode int, lunchcode int, snackscode int, FOREIGN KEY (userId) REFERENCES users(id));",
+    (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("created messcodes");
+      }
+    }
+  );
+
   pool.query(
     "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','Dosa')",
     "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Monday','breadjam','Rasam','Appalam')",
