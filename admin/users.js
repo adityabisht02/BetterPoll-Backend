@@ -1,11 +1,13 @@
 const express = require("express");
 const pool = require("../mysqlconnector");
 const router = express.Router();
+const bcrypt=require("bcrypt");
 
 
-router.post("/add-new-user", (req,res)=>{
-    const {name, email, phone} = req.body;
-    let sql = `INSERT INTO users (name, email, phone) VALUES (?, ?, ?);`;
+router.post("/add-new-user", async(req,res)=>{
+    const {name, email, phone,password} = req.body;
+    const hashedPassword= await bcrypt.hash(password,10);
+    let sql = `INSERT INTO users (name, email, phone,hashedPassword) VALUES (?, ?, ?, ?);`;
     pool.query(sql, [name, email, phone], function (error, results, fields) {
         if (error) throw error;
         res.status(201).json({success: true, results, msg: "User created successfully"});
