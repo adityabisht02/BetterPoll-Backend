@@ -66,6 +66,17 @@ function initialiseDB(){
   );
 
   pool.query(
+    "CREATE TABLE IF NOT EXISTS messattendance (userId int not null, userName varchar(50), breakfast varchar(1), lunch varchar(1), dinner varchar(1), snacks varchar(1), FOREIGN KEY (userId) REFERENCES users(id));",
+    (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("created messattendance");
+      }
+    } 
+  );
+
+  pool.query(
     "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','Dosa')",
     "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Monday','breadjam','Rasam','Appalam')",
     "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Tuesday','breadjam','Fulka','Rice')",
