@@ -25,5 +25,42 @@ router.post("/sign-up", async (req, res) => {
 });
 
 //login api for admins
+router.post("/login", async function (req, res) {
+  try {
+    var adminExist = false;
+    const { name, password } = req.body;
+    console.log("req.body is ", req.body);
+    let sql = "SELECT * FROM admin WHERE username = ?";
+    pool.query(sql, name, function (error, results) {
+      if (error) throw error;
+      else {
+        console.log("results - ", results);
+        results.forEach((element) => {
+          console.log(element);
+          const match = bcrypt.compareSync(password, element.password);
+          console.log("Match - ", match);
+          if (match) {
+            adminExist = true;
+
+            console.log("adminexist - ", adminExist);
+            res.status(201).json({
+              success: true,
+              element,
+              msg: "Admin",
+            });
+          }
+        });
+        console.log("admin - ", adminExist);
+        if (adminExist === false)
+          res.status(500).json({
+            success: false,
+            msg: "Admin doesn't exist",
+          });
+      }
+    });
+  } catch (err) {
+    console.log("Error -", err);
+  }
+});
 
 module.exports = router;
