@@ -25,12 +25,12 @@ app.use("/", userLoginApis);
 app.use("/admin", adminUserApis);
 app.use("/admin", adminShuttleApis)
 app.use("/",userviewShuttleservice);
-app.use("/admin", adminMessApis)
+// app.use("/admin", adminMessApis)
 
 
 
 
-app.listen(5000 || process.env.PORT, function(err){
+app.listen(3000 || process.env.PORT, function(err){
     if (err) console.log(err);
-    console.log("Server listening on PORT", 5000);
+    console.log("Server listening on PORT", 3000);
 });

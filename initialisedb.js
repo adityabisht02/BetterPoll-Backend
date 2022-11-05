@@ -12,7 +12,7 @@ function initialiseDB(){
   );
 
   pool.query(
-    "CREATE TABLE users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone varchar(10),PRIMARY KEY (id));",
+    "CREATE TABLE users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone varchar(11),PRIMARY KEY (id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
