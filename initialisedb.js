@@ -1,8 +1,10 @@
 //mysql connector pool
 const pool = require("./mysqlconnector");
 
-function initialiseDB(){
-    pool.query("CREATE TABLE admin (id int,username varchar(50),password varchar(50),email varchar(50));", (ex, rows) => {
+function initialiseDB() {
+  pool.query(
+    "CREATE TABLE IF NOT EXISTS admin (id int AUTO_INCREMENT,username varchar(50),password varchar(255),email varchar(50));",
+    (ex, rows) => {
       if (ex) {
         console.log(ex);
       } else {
@@ -12,7 +14,7 @@ function initialiseDB(){
   );
 
   pool.query(
-    "CREATE TABLE users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone varchar(11),PRIMARY KEY (id));",
+    "CREATE TABLE IF NOT EXISTS users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone varchar(10),hashedPassword varchar(255),PRIMARY KEY (id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -22,7 +24,7 @@ function initialiseDB(){
     }
   );
   pool.query(
-    "CREATE TABLE menus (day varchar(25) primary key not null, breakfastMenu TEXT, lunchMenu TEXT, dinnerMenu TEXT);",
+    "CREATE TABLE IF NOT EXISTS menus (day varchar(25) primary key not null, breakfastMenu TEXT, lunchMenu TEXT, dinnerMenu TEXT);",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -33,7 +35,7 @@ function initialiseDB(){
   );
 
   pool.query(
-    "CREATE TABLE shuttles (busno int,tripName varchar(50));",
+    "CREATE TABLE IF NOT EXISTS shuttles (busno int,tripName varchar(50));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -44,7 +46,7 @@ function initialiseDB(){
   );
 
   pool.query(
-    "CREATE TABLE posts (id int AUTO_INCREMENT primary key, name varchar(128), content TEXT, date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);",
+    "CREATE TABLE IF NOT EXISTS posts (id int AUTO_INCREMENT primary key, name varchar(128), content TEXT, date TIMESTAMP DEFAULT CURRENT_TIMESTAMP);",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -55,7 +57,7 @@ function initialiseDB(){
   );
 
   pool.query(
-    "CREATE TABLE messcodes (userId int not null, breakfastcode int, lunchcode int, dinnercode int, snackscode int, FOREIGN KEY (userId) REFERENCES users(id));",
+    "CREATE TABLE IF NOT EXISTS messcodes (userId int not null, breakfastcode int, lunchcode int, dinnercode int, snackscode int, FOREIGN KEY (userId) REFERENCES users(id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -66,21 +68,17 @@ function initialiseDB(){
   );
 
   pool.query(
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','Dosa')",
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Monday','breadjam','Rasam','Appalam')",
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Tuesday','breadjam','Fulka','Rice')",
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Wednesday','breadjam Milk','Rasam','Idli')",
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Thrusday','omlete','Rasam','Peas Masala')",
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Friday','breadjam','Chowmien','Appalam')",
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Saturday','breadjam','Rasam','Appalam')",
+    "CREATE TABLE IF NOT EXISTS messattendance (userId int not null, userName varchar(50), breakfast varchar(1), lunch varchar(1), dinner varchar(1), snacks varchar(1), FOREIGN KEY (userId) REFERENCES users(id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
       } else {
-        console.log("Data added to menus");
+        console.log("created messattendance");
       }
     }
   );
+
+ 
 }
 
 initialiseDB();
