@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "initialise-db": "node initialisedb.js",
+    "fillsampledata":"node fillsampledata.js",
     "start": "nodemon index.js"
   },
   "author": "Aditya Bisht",

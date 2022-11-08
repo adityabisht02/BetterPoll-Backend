@@ -4,7 +4,10 @@ const pool = require("../mysqlconnector");
 const router = express.Router();
 
 
-
+//api for logging user attendance
+router.post("/log-attendance",function(req,res){
+    
+})
 
 
 //Function to generate 5 digit random number
