@@ -5,8 +5,22 @@ const pool=require("../mysqlconnector");
 
 
 //view-mess-details   (will include menu and attendance code)
-router.post('/log-attendance',function (req,res) {
-    
+router.get("/view-mess-details",function(req, res){
+    const day=req.body.day;
+    if(!day){
+        return res.json({success:false,msg:"Day or name missing from request body"});
+    }
+    pool.query("SELECT * FROM menus day = ?", day, function (error, results, fields){
+        if (results.length==0){
+            menu="Menu not configured";
+        }
+        else{
+            menu=results[0].menu
+        }
+    });
 })
+
+
+
 
 modue.exports=router;
