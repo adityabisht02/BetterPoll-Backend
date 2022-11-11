@@ -16,9 +16,11 @@ The frontend repo : https://github.com/adityabisht02/Betterpoll
 
 5) Create a mySQL database called "betterpoll". Check here to [install mySQL](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-installing)
 
-6) Run ```npm run initialise-db``` function to create tables for users and admins.
+6) Run ```npm run initialise-db``` function to create the required tables (after you have created a database named betterpoll).
 
-4) Run ```npm start``` to start the server.
+7) Run ```npm run fill-sample-data``` function to add sample data to tables for testing.
+
+8) Run ```npm start``` to start the server.
 
 ## Backend workflow:
 

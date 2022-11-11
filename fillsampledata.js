@@ -25,7 +25,7 @@ function fillSampleData() {
   );
 
   pool.query(
-    "INSERT into messcodes (userId,breakfastcode,lunchcode,dinnercode, snackscode) values (1,2,3,4,5), (2,10,20,30,40), (3,2,3,4,5), (4,10,20,30,40);",
+    "INSERT into messcodes (userId,breakfastcode,lunchcode,dinnercode, snackscode) values (1,10001,10001,10001,10001), (2,12345,12345,12345,12345), (3,23456,23456,23456,23456), (4,25437,25437,25437,25437);",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
