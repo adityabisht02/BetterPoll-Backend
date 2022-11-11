@@ -3,7 +3,7 @@ const pool = require("./mysqlconnector");
 
 function initialiseDB() {
   pool.query(
-    "CREATE TABLE IF NOT EXISTS admin (id int AUTO_INCREMENT,username varchar(50),password varchar(255),email varchar(50));",
+    "CREATE TABLE IF NOT EXISTS admin (id int AUTO_INCREMENT,username varchar(50),password varchar(255),email varchar(50),PRIMARY KEY (id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -14,7 +14,7 @@ function initialiseDB() {
   );
 
   pool.query(
-    "CREATE TABLE IF NOT EXISTS users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone varchar(10),hashedPassword varchar(255),PRIMARY KEY (id));",
+    "CREATE TABLE IF NOT EXISTS users (id int AUTO_INCREMENT,name varchar(50),email varchar(50),phone varchar(10),PRIMARY KEY (id));",
     (ex, rows) => {
       if (ex) {
         console.log(ex);

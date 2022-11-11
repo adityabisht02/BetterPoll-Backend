@@ -1,9 +1,9 @@
 //mysql connector pool
 const pool = require("./mysqlconnector");
 
-function fillSampleData() {
+function fillTables() {
   pool.query(
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','Dosa'), ('Monday','breadjam','Rasam','Appalam'), ('Tuesday', 'breadjam', 'Fulka', 'Rice'), ('Wednesday', 'breadjam Milk', 'Rasam', 'Idli'), ('Thrusday', 'omlete', 'Rasam', 'Peas Masala'), ('Friday', 'breadjam', 'Chowmien', 'Appalam'), ('Saturday', 'breadjam', 'Rasam', 'Appalam');",
+    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','Dosa'), ('Monday','breadjam','Rasam','Appalam'), ('Tuesday', 'breadjam', 'Fulka', 'Rice'), ('Wednesday', 'breadjam Milk', 'Rasam', 'Idli'), ('Thursday', 'omlete', 'Rasam', 'Peas Masala'), ('Friday', 'breadjam', 'Chowmien', 'Appalam'), ('Saturday', 'breadjam', 'Rasam', 'Appalam');",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -14,7 +14,7 @@ function fillSampleData() {
   );
 
   pool.query(
-    "INSERT into users (id,name,email,phone,hashedPassword) values (1,'Alex', 'alex@gmail.com', 1234567890,'xyz'), (2,'Bob','bob@gmail.com',1234567899,'xyy'), (3,'Luis','luis@gmail.com',1234567898,'xyxz'), (4,'Walter','walter@gmail.com',1234567896, 'xyty');",
+    "INSERT into users (id,name,email,phone) values (1,'adityabisht', 'adi@gmail.com', 123456789), (2,'Bob','bob@gmail.com',1234567899), (3,'Luis','luis@gmail.com',1234567898), (4,'Walter','walter@gmail.com',1234567896);",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -24,6 +24,11 @@ function fillSampleData() {
     }
   );
 
+  
+
+}
+
+function fillForeignKeyTables(){
   pool.query(
     "INSERT into messcodes (userId,breakfastcode,lunchcode,dinnercode, snackscode) values (1,10001,10001,10001,10001), (2,12345,12345,12345,12345), (3,23456,23456,23456,23456), (4,25437,25437,25437,25437);",
     (ex, rows) => {
@@ -45,7 +50,10 @@ function fillSampleData() {
       }
     }
   );
-
 }
 
-fillSampleData();
+
+fillTables();
+
+//foreign key tables will be filled after the tables they are pointing to are filled
+fillForeignKeyTables();
