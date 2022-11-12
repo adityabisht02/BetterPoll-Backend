@@ -13,7 +13,12 @@ router.post("/login", function(req, res){
         if (results.length==0){
             return res.json({success: false, msg:"User does not exist contact ur admin"});
         }
-        return res.json({success: true, results, msg: "You have successfully logged in"});
+        //we are only returning the id
+        const id=results[0].id;
+        const name=results[0].name;
+        const email=results[0].email;
+        const phone=results[0].phone;
+        return res.json({success: true, id,name,email,phone, msg: "You have successfully logged in"});
     });
 });
 

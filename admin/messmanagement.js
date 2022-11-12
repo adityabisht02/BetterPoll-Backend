@@ -4,9 +4,20 @@ const pool = require("../mysqlconnector");
 const router = express.Router();
 
 
-//api for logging user attendance
+//api for logging user attendance on admin device, attendance will be taken on  basis of code entered
 router.post("/log-attendance",function(req,res){
-    
+    const id=req.body.id; //basically userid
+
+    pool.query("SELECT * FROM users WHERE id = ?", id, function (error, results, fields){
+        if (results.length==0){
+            return res.json({success: false, msg:"User is not registered !!"});
+        }
+        //we can display the name of the user if he exists
+        const message="Enjoy your meal "+results[0].name+" !";
+
+        return res.json({success: true, msg: message});
+    });
+
 })
 
 
@@ -16,4 +27,5 @@ function randomNum(){
     return fiveDigitNum;
 }
 
+module.exports=router;
 

@@ -15,6 +15,10 @@ router.get("/view-shuttles",function (req, res){
 
 });
 
+router.post("/book-shuttle",function(req,res){
+    
+})
+
 //book-shuttle
 
 

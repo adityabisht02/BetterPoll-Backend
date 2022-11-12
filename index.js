@@ -18,7 +18,7 @@ const userLoginApis = require("./user/login");
 const adminUserApis = require("./admin/users");
 const adminShuttleApis = require("./admin/shuttleservice");
 const userviewShuttleservice = require("./user/shuttleservice");
-// const adminMessApis = require("./admin/messmanagement");
+const adminMessApis = require("./admin/messmanagement");
 const adminLoginApis = require("./admin/login");
 //setting apis
 app.use("/", userLoginApis);
@@ -26,6 +26,7 @@ app.use("/admin", adminUserApis);
 app.use("/admin", adminShuttleApis);
 app.use("/", userviewShuttleservice);
 app.use("/admin", adminLoginApis);
+app.use("/admin",adminMessApis);
 
 
 app.listen(3000 || process.env.PORT, function (err) {

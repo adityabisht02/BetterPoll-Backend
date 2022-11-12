@@ -4,7 +4,7 @@ var router = express.Router();
 const pool=require("../mysqlconnector");
 
 
-//view-mess-details   (will include menu and attendance code)
+//view-mess-details   (will include only menu because messcode is basically id of the user)
 router.get("/view-mess-details",function(req, res){
     const day=req.body.day;
     if(!day){
