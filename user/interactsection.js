@@ -4,15 +4,21 @@ var router = express.Router();
 const pool=require("../mysqlconnector");
 
 
-//make-post 
+//make-post
 router.post("/make-post",function (req, res){
-    const { name, postcontent} = req.body
-
-    let sql='INSERT INTO posts (name, postcontent) VALUES ( ?, ? );';
+    const { id, postcontent} = req.body
+    var name;
+    pool.query("SELECT * FROM  users WHERE id=?",id,function(error,results){
+        if(error)throw error;
+        name=results[0].name;
+        console.log(name)
+    let sql='INSERT INTO posts (name, content) VALUES ( ?, ? );';
     pool.query(sql, [name, postcontent],  function (error, results, fields) {
         if (error) throw error;
-        res.status(201).json({success: true, results, msg: "Post created successfully"});
+        res.status(201).json({success: true,name,postcontent, msg: "Post created successfully"});
     });
+    });
+    
 })
 
 

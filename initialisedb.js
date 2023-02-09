@@ -23,8 +23,20 @@ function initialiseDB() {
       }
     }
   );
+
   pool.query(
-    "CREATE TABLE IF NOT EXISTS menus (day varchar(25) primary key not null, breakfastMenu TEXT, lunchMenu TEXT, dinnerMenu TEXT);",
+    "CREATE TABLE IF NOT EXISTS gatepasses (id int not null, datein varchar(50), dateout varchar(50),parentphone varchar(10),roomno varchar(10), reason varchar(50), approvalstatus int(1), PRIMARY KEY (id),FOREIGN KEY (id) REFERENCES users(id));",
+    (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("created gatepasses");
+      }
+    }
+  );
+
+  pool.query(
+    "CREATE TABLE IF NOT EXISTS menus (day varchar(25) primary key not null, breakfastMenu TEXT, lunchMenu TEXT,snacksMenu TEXT,dinnerMenu TEXT);",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
@@ -33,6 +45,17 @@ function initialiseDB() {
       }
     }
   );
+
+  // pool.query(
+  //   "CREATE TABLE IF NOT EXISTS shuttlebooking (Sno int not null);",
+  //   (ex, rows) => {
+  //     if (ex) {
+  //       console.log(ex);
+  //     } else {
+  //       console.log("created shuttlebooking");
+  //     }
+  //   }
+  // );
 
   pool.query(
     "CREATE TABLE IF NOT EXISTS shuttles (busno int,tripName varchar(50));",
@@ -77,8 +100,6 @@ function initialiseDB() {
       }
     }
   );
-
- 
 }
 
 initialiseDB();

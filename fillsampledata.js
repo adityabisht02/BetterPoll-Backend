@@ -3,12 +3,23 @@ const pool = require("./mysqlconnector");
 
 function fillTables() {
   pool.query(
-    "INSERT into menus (day,breakfastMenu,lunchMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','Dosa'), ('Monday','breadjam','Rasam','Appalam'), ('Tuesday', 'breadjam', 'Fulka', 'Rice'), ('Wednesday', 'breadjam Milk', 'Rasam', 'Idli'), ('Thursday', 'omlete', 'Rasam', 'Peas Masala'), ('Friday', 'breadjam', 'Chowmien', 'Appalam'), ('Saturday', 'breadjam', 'Rasam', 'Appalam');",
+    "INSERT into menus (day,breakfastMenu,lunchMenu,snacksMenu,dinnerMenu) values ('Sunday','omlete','Chowmien','samose','Dosa'), ('Monday','breadjam','Rasam','maggi','Appalam'), ('Tuesday', 'breadjam', 'Fulka','pakora','Rice'), ('Wednesday', 'breadjam Milk', 'Rasam','break','Idli'), ('Thursday', 'omlete', 'Rasam','pasta', 'Peas Masala'), ('Friday', 'breadjam', 'Chowmien','penne pasta', 'Appalam'), ('Saturday', 'breadjam', 'Rasam','fruits','Appalam');",
     (ex, rows) => {
       if (ex) {
         console.log(ex);
       } else {
         console.log("Data added to menus");
+      }
+    }
+  );
+
+  pool.query(
+    "INSERT into gatepasses (id,datein,dateout,parentphone,roomno,reason,approvalstatus) values (2,'8/2/23','6/2/23','123456789','A-563','acidity',0),(1,'9/2/23','5/2/23','123456789','T2-763','weekend',0);",
+    (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("Data added to gatepasses");
       }
     }
   );
@@ -23,12 +34,9 @@ function fillTables() {
       }
     }
   );
-
-  
-
 }
 
-function fillForeignKeyTables(){
+function fillForeignKeyTables() {
   pool.query(
     "INSERT into messcodes (userId,breakfastcode,lunchcode,dinnercode, snackscode) values (1,10001,10001,10001,10001), (2,12345,12345,12345,12345), (3,23456,23456,23456,23456), (4,25437,25437,25437,25437);",
     (ex, rows) => {
@@ -51,7 +59,6 @@ function fillForeignKeyTables(){
     }
   );
 }
-
 
 fillTables();
 

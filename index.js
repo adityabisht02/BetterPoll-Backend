@@ -15,16 +15,23 @@ const pool = require("./mysqlconnector");
 
 //importing routers
 const userLoginApis = require("./user/login");
+const userMessApis=require("./user/messmanagement")
 const adminUserApis = require("./admin/users");
 const adminShuttleApis = require("./admin/shuttleservice");
-const userviewShuttleservice = require("./user/shuttleservice");
+const userShuttleServiceApis = require("./user/shuttleservice");
+const userInteractApis = require("./user/interactsection");
 const adminMessApis = require("./admin/messmanagement");
 const adminLoginApis = require("./admin/login");
-//setting apis
+
+//setting user apis
 app.use("/", userLoginApis);
+app.use("/", userShuttleServiceApis);
+app.use("/",userMessApis);
+app.use("/",userInteractApis);
+
+//setting admin apis
 app.use("/admin", adminUserApis);
 app.use("/admin", adminShuttleApis);
-app.use("/", userviewShuttleservice);
 app.use("/admin", adminLoginApis);
 app.use("/admin",adminMessApis);
 

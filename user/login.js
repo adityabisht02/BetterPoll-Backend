@@ -18,6 +18,7 @@ router.post("/login", function(req, res){
         const name=results[0].name;
         const email=results[0].email;
         const phone=results[0].phone;
+        console.log("request made");
         return res.json({success: true, id,name,email,phone, msg: "You have successfully logged in"});
     });
 });

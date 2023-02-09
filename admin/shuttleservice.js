@@ -6,8 +6,12 @@ const router = express.Router();
 
 
 router.post("/add-shuttle",async(req, res) => {
-    const busNumber = req.body.busno;
+    const busNumber = req.body.busNumber;
     const trip = req.body.trip;
+
+    if(!busNumber || !trip){
+        return res.json({success:false,msg:"Try again!"})
+    }
 
     // const sqlquery="INSERT INTO `shuttles` (`busno`, `tripName`) VALUES ("+ busNumber+","+ trip+")"
     const sqlquery = "INSERT INTO shuttles (busno,tripName) VALUES (?,?)"

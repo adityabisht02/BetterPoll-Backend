@@ -4,13 +4,14 @@ const router = express.Router();
 
 
 
-router.post("/add-new-user", async(req,res)=>{
+router.post("/add-new-user", (req,res)=>{
     const {name, email, phone} = req.body;
 
     let sql = `INSERT INTO users (name, email, phone) VALUES (?, ?, ?);`;
     pool.query(sql, [name, email, phone], function (error, results, fields) {
         if (error) throw error;
-        res.status(201).json({success: true, results, msg: "User created successfully"});
+        console.log(results);
+        res.status(201).json({success: true, msg: "User created successfully"});
     });
 });
 

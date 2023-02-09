@@ -6,7 +6,7 @@ const router = express.Router();
 
 //api for logging user attendance on admin device, attendance will be taken on  basis of code entered
 router.post("/log-attendance",function(req,res){
-    const id=req.body.id; //basically userid
+    const id=req.body.code; //basically userid
 
     pool.query("SELECT * FROM users WHERE id = ?", id, function (error, results, fields){
         if (results.length==0){
@@ -21,11 +21,22 @@ router.post("/log-attendance",function(req,res){
 })
 
 
-//Function to generate 5 digit random number
-function randomNum(){
-    let fiveDigitNum = Math.floor(Math.random() * 90000) + 10000;
-    return fiveDigitNum;
-}
+//api for editing mess menu
+router.post("/edit-menu",function (req,res) {
+    const {day,breakfast,lunch,snacks,dinner}=req.body;
+
+    // update statment
+    let sql = `UPDATE menus SET breakfastMenu = ?,lunchMenu=?,snacksMenu=?,dinnerMenu=? WHERE day = ?`;
+    pool.query(sql, [breakfast,lunch,snacks,dinner,day], function (error, results){
+        if (results.length==0){
+            return res.json({success: false, msg:"Something went wrong"});
+        }
+       
+
+        return res.json({success: true, msg: "Menu updated"});
+    });
+
+})
 
 module.exports=router;
 
