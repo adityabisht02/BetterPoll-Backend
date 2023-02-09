@@ -30,3 +30,4 @@ The frontend repo : https://github.com/adityabisht02/Betterpoll
 
 ![image](https://user-images.githubusercontent.com/89146189/193776983-39589d16-5e10-4b75-bbf3-aba9a4968550.png)
 
+![image](https://user-images.githubusercontent.com/89146189/217824467-e1266548-7d3e-46ad-a7d0-9aa13b5b1f8b.png)
