@@ -2,8 +2,11 @@ const express= require("express");
 var router = express.Router();
 //mysql connector pool
 const pool=require("../mysqlconnector");
+//redis client
+const redisClient=require("../redisconnectorclient")
 
 
+const REDIS_EXPIRATION=3600;
 //make-post
 router.post("/make-post",function (req, res){
     const { id, postcontent} = req.body
@@ -25,9 +28,17 @@ router.post("/make-post",function (req, res){
 
 //view-all-posts
 router.get("/view-all-posts", function (req, res){
+    redisClient.get("posts",(error,posts)=>{
+        if(error)console.log(error)
+
+        if(posts !=null){
+            return res.status(200).json({success: true, results, msg: "All posts retrieved successfully"});
+        }
+    })
     let sql='SELECT * FROM posts';
     pool.query(sql, function (error, results, fields) {
         if (error) throw error;
+        redisClient.setex("posts",REDIS_EXPIRATION,results);
         res.status(200).json({success: true, results, msg: "All posts retrieved successfully"});
     });
 })

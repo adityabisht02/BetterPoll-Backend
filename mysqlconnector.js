@@ -1,4 +1,4 @@
-//mysql driver
+//mysql driver to be used
 const mysql = require("mysql2");
 require("dotenv").config();
 
