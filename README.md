@@ -24,10 +24,12 @@ The frontend repo : https://github.com/adityabisht02/Betterpoll
 
 ## Backend workflow:
 
-![image](https://user-images.githubusercontent.com/89146189/193776877-9a467561-473b-4244-a931-4047adaa3118.png)
+![image](https://user-images.githubusercontent.com/89146189/231239896-d727e192-d70e-4ae5-8924-070339934aad.png)
 
-![image](https://user-images.githubusercontent.com/89146189/193776946-5c3f4e31-d8b9-4de5-817a-903df399bb5e.png)
+![image](https://user-images.githubusercontent.com/89146189/231240049-73af9d43-e058-4fe3-82a3-92c01931249d.png)
 
-![image](https://user-images.githubusercontent.com/89146189/193776983-39589d16-5e10-4b75-bbf3-aba9a4968550.png)
+![image](https://user-images.githubusercontent.com/89146189/231240128-b036db40-6f01-426e-b448-1848d64f74d4.png)
 
-![image](https://user-images.githubusercontent.com/89146189/217824467-e1266548-7d3e-46ad-a7d0-9aa13b5b1f8b.png)
+![image](https://user-images.githubusercontent.com/89146189/231240207-f286163f-f5d7-44be-99f4-85d5c9264b71.png)
+
+![image](https://user-images.githubusercontent.com/89146189/231240585-7055f4fd-726c-4221-891a-84bdc5c981e9.png)
