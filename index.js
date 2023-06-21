@@ -15,15 +15,15 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 const pool = require("./mysqlconnector");
 const redisClient = require("./redisconnectorclient");
 //importing routers
-const userLoginApis = require("./user/login");
-const userMessApis = require("./user/messmanagement");
-const adminUserApis = require("./admin/users");
-const adminShuttleApis = require("./admin/shuttleservice");
-const userShuttleServiceApis = require("./user/shuttleservice");
-const userInteractApis = require("./user/interactsection");
-const adminMessApis = require("./admin/messmanagement");
-const adminLoginApis = require("./admin/login");
-const userGatepassApis = require("./user/gatepass");
+const userLoginApis = require("./routes/user/login");
+const userMessApis = require("./routes/user/messmanagement");
+const adminUserApis = require("./routes/admin/users");
+const adminShuttleApis = require("./routes/admin/shuttleservice");
+const userShuttleServiceApis = require("./routes/user/shuttleservice");
+const userInteractApis = require("./routes/user/interactsection");
+const adminMessApis = require("./routes/admin/messmanagement");
+const adminLoginApis = require("./routes/admin/login");
+const userGatepassApis = require("./routes/user/gatepass");
 // const adminGatepassApis=require("./admin/gatepass");
 
 //setting user apis

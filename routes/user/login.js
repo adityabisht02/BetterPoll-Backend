@@ -1,7 +1,7 @@
 const express = require("express");
 var router = express.Router();
 //mysql connector pool
-const pool = require("../mysqlconnector");
+const pool = require("../../mysqlconnector");
 
 router.post("/login", function (req, res) {
   //we are only verifying the user through their email

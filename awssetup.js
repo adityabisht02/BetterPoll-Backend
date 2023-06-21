@@ -12,27 +12,38 @@ AWS.config.update({
 function checkModeration() {
   const rekognition = new AWS.Rekognition();
   // Load the image file
-  const imgBytes = fs.readFileSync("./drug_overdose-one_one.jpg");
+  const imgBytes = fs.readFileSync("./testimages/drug_overdose-one_one.jpg");
   // Set up the request parameters
-  const params = {Image: {
+  const params = {
+    Image: {
       Bytes: imgBytes,
-    },MinConfidence: 50,};
+    },
+    MinConfidence: 50,
+  };
   // Call the detectModerationLabels method
   rekognition.detectModerationLabels(params, (err, data) => {
-    if (err) {console.log(err, err.stack);} else {
+    if (err) {
+      console.log(err, err.stack);
+    } else {
       //array of objects with ModerationLabels and
       const arr = data.ModerationLabels;
       for (var i = 0; i < arr.length; i++) {
         const parent = arr[i].ParentName;
         const child = arr[i].Name;
-        if (parent == "Violence" ||
+        if (
+          parent == "Violence" ||
           child == "Violence" ||
           parent == "Visually Disturbing" ||
           parent == "Explicit Nudity" ||
           child == "Nudity" ||
           parent == "Drugs" ||
-          parent == "Rude Gestures") {
-          console.log("This image violates guidelines ", parent);}}}});
+          parent == "Rude Gestures"
+        ) {
+          console.log("This image violates guidelines ", parent);
+        }
+      }
+    }
+  });
 }
 
 checkModeration();

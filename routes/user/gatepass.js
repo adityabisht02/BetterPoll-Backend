@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
 //import AWS SDK Setup
-const AWS = require("../awssetup");
-const pool = require("../mysqlconnector");
+const AWS = require("../../awssetup");
+const pool = require("../../mysqlconnector");
 const router = express.Router();
 const s3 = new AWS.S3();
 

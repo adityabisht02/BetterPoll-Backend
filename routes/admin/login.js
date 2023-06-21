@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const pool = require("../mysqlconnector");
+const pool = require("../../mysqlconnector");
 const router = express.Router();
 
 const bcrypt = require("bcrypt");

@@ -1,18 +1,16 @@
 const express = require("express");
-const pool = require("../mysqlconnector");
+const pool = require("../../mysqlconnector");
 const router = express.Router();
 
+router.post("/add-new-user", (req, res) => {
+  const { name, email, phone } = req.body;
 
-
-router.post("/add-new-user", (req,res)=>{
-    const {name, email, phone} = req.body;
-
-    let sql = `INSERT INTO users (name, email, phone) VALUES (?, ?, ?);`;
-    pool.query(sql, [name, email, phone], function (error, results, fields) {
-        if (error) throw error;
-        console.log(results);
-        res.status(201).json({success: true, msg: "User created successfully"});
-    });
+  let sql = `INSERT INTO users (name, email, phone) VALUES (?, ?, ?);`;
+  pool.query(sql, [name, email, phone], function (error, results, fields) {
+    if (error) throw error;
+    console.log(results);
+    res.status(201).json({ success: true, msg: "User created successfully" });
+  });
 });
 
 router.get("/get-user-details", function (req, res) {
