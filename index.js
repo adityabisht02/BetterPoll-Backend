@@ -3,7 +3,6 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-
 app.use(cors());
 var router = express.Router();
 app.use(router);
@@ -14,7 +13,7 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 //mysql connector pool
 const pool = require("./mysqlconnector");
-const redisClient=require("./redisconnectorclient");
+const redisClient = require("./redisconnectorclient");
 //importing routers
 const userLoginApis = require("./user/login");
 const userMessApis = require("./user/messmanagement");
@@ -43,4 +42,8 @@ app.use("/admin", adminMessApis);
 app.listen(3000 || process.env.PORT, function (err) {
   if (err) console.log(err);
   console.log("Server listening on PORT", 3000);
+});
+
+app.get("/", function (req, res) {
+  return res.json({ success: true, msg: "Call made to root api" });
 });

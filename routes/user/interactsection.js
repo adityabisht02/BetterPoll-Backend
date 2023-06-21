@@ -1,17 +1,65 @@
 const express = require("express");
 var router = express.Router();
+
+// Middleware to parse URL encoded request body
+router.use(express.json());
 //mysql connector pool
-const pool = require("../mysqlconnector");
+const pool = require("../../mysqlconnector");
+
+const fs = require("fs");
+
 //redis client
-const redisClient = require("../redisconnectorclient");
+const redisClient = require("../../redisconnectorclient");
 //import bad words
 var Filter = require("bad-words");
 filter = new Filter();
 
 const REDIS_EXPIRATION = 3600;
+
+function checkModeration() {
+  const rekognition = new AWS.Rekognition();
+  // Load the image file
+  const imgBytes = fs.readFileSync("./drug_overdose-one_one.jpg");
+
+  // Set up the request parameters
+  const params = {
+    Image: {
+      Bytes: imgBytes,
+    },
+    MinConfidence: 50,
+  };
+
+  // Call the detectModerationLabels method
+  rekognition.detectModerationLabels(params, (err, data) => {
+    if (err) {
+      console.log(err, err.stack);
+    } else {
+      //array of objects with ModerationLabels and
+      const arr = data.ModerationLabels;
+
+      for (var i = 0; i < arr.length; i++) {
+        const parent = arr[i].ParentName;
+        const child = arr[i].Name;
+        if (
+          parent == "Violence" ||
+          child == "Violence" ||
+          parent == "Visually Disturbing" ||
+          parent == "Explicit Nudity" ||
+          child == "Nudity" ||
+          parent == "Drugs" ||
+          parent == "Rude Gestures"
+        ) {
+          console.log("This image violates guidelines ", parent);
+        }
+      }
+    }
+  });
+}
+
 //make-post
 router.post("/make-post", function (req, res) {
   var { id, postcontent } = req.body;
+  console.log(id);
   //clean the postcontent
   postcontent = filter.clean(postcontent);
   var name;

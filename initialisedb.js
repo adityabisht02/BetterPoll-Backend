@@ -100,6 +100,19 @@ function initialiseDB() {
       }
     }
   );
+
+  //gatepasses
+
+  pool.query(
+    "CREATE TABLE IF NOT EXISTS gatepasses (userId int not null, parentName varchar(50),dateIn varchar(50),dateOut varchar(50), s3url varchar(50));",
+    (ex, rows) => {
+      if (ex) {
+        console.log(ex);
+      } else {
+        console.log("created gatepasses");
+      }
+    }
+  );
 }
 
 initialiseDB();
